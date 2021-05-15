@@ -16,11 +16,11 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping
-    public ResponseEntity<String> createPost(
+    public ResponseEntity<Long> createPost(
             @RequestHeader UUID userId,
             @RequestBody CreatePostDto dto) {
-        final UUID postId = postService.createPost(userId, dto);
-        return ResponseEntity.status(CREATED).body(postId.toString());
+        final Long postId = postService.createPost(userId, dto);
+        return ResponseEntity.status(CREATED).body(postId);
     }
 
     @GetMapping("/{postId}")

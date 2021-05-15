@@ -11,10 +11,9 @@ public class PostService {
 
     private final PostRepository postRepository;
 
-    public UUID createPost(UUID userId, CreatePostDto dto) {
+    public Long createPost(UUID userId, CreatePostDto dto) {
         final Post post = Post.newInstance(userId, dto.getText());
-        postRepository.save(post);
-        return post.getId();
+        return postRepository.save(post).getId();
     }
 
     public Post getPost(UUID postId) {
