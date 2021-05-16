@@ -17,7 +17,7 @@ public class PostService {
     public UUID createPost(UUID userId, CreatePostDto dto) {
         final Post post = Post.newInstance(userId, dto.getText());
         final UUID postId = postRepository.save(post).getId();
-        if (dto.getMentionedUsers()!= null && ! dto.getMentionedUsers().isEmpty()) {
+        if (dto.getMentionedUsers() != null && !dto.getMentionedUsers().isEmpty()) {
             final List<Notification> notifications = dto.getMentionedUsers().stream()
                     .map(user -> new Notification(user, "You are mentioned in a post!",
                             String.format("https://localhost:8080/posts/%s", post.getId())))
