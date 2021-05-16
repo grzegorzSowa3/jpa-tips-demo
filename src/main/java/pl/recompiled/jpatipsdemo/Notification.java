@@ -13,7 +13,8 @@ import java.util.UUID;
 class Notification {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "notification_sequence")
+    @SequenceGenerator(name = "notification_sequence", allocationSize = 5)
     private Long id;
     private final UUID userId;
     private final String message;
