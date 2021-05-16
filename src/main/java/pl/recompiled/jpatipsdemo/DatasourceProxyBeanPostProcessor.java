@@ -23,8 +23,8 @@ public class DatasourceProxyBeanPostProcessor implements BeanPostProcessor {
             return ProxyDataSourceBuilder.create(dataSourceBean)
                     .name("BatchLogger")
                     .asJson().countQuery()
-                    .logQueryBySlf4j(SLF4JLogLevel.INFO
-                    ).build();
+                    .logQueryBySlf4j(SLF4JLogLevel.INFO)
+                    .build();
         }
         return bean;
     }
