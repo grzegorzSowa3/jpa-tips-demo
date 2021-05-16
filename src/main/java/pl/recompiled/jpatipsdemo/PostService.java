@@ -16,7 +16,7 @@ public class PostService {
         return postRepository.save(post).getId();
     }
 
-    public Post getPost(UUID postId) {
+    public Post getPost(Long postId) {
         return postRepository.findById(postId).orElseThrow(NotFoundException::new);
     }
 
