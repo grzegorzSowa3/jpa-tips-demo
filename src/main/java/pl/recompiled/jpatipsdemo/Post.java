@@ -3,10 +3,7 @@ package pl.recompiled.jpatipsdemo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.UUID;
 
 import static lombok.AccessLevel.PRIVATE;
@@ -17,7 +14,8 @@ import static lombok.AccessLevel.PRIVATE;
 public class Post {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_sequence")
+    @SequenceGenerator(name = "post_sequence", allocationSize = 5)
     private Long id;
     private UUID author;
     private String text;
